@@ -1,6 +1,7 @@
 node_modules/
 .pnpm-store/
 coverage/
+packages/i18n/dist/
 *.tsbuildinfo
 .env
 .env.*

@@ -1,7 +1,12 @@
 {
   "name": "@kokoro/i18n",
   "version": "0.1.0",
-  "private": true,
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LordFoxFairy/kokoro-web-shared.git",
+    "directory": "packages/i18n"
+  },
   "description": "Framework-free locale negotiation, interpolation and fallback engine.",
   "type": "module",
   "exports": {
@@ -10,7 +15,21 @@
       "import": "./src/index.ts"
     }
   },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.cnb.cool/awesomeaicode/npm/registry/-/packages/",
+    "exports": {
+      ".": {
+        "types": "./dist/index.d.ts",
+        "import": "./dist/index.js"
+      }
+    }
+  },
   "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "prepack": "pnpm run build",
     "test": "vitest run test",
     "test:integration": "vitest run --passWithNoTests",
     "typecheck": "tsc --noEmit",
