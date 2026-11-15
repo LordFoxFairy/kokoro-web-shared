@@ -2,7 +2,7 @@
 
 共享 i18n 窄包引擎。framework-agnostic、无第三方依赖、无 DOM/React。
 
-## 公开 API（`@kokoro/i18n`，单文件 barrel = `src/index.ts`）
+## 公开 API（`@lordfoxfairy/i18n`，单文件 barrel = `src/index.ts`）
 
 - `createI18n(config)` → `I18n`：注入 locale 全集、源语言完整词典 `source`、增量覆盖 `overrides`，得到 `{ locales, defaultLocale, negotiate, translate }`。
 - `interpolate(template, vars)`：`{name}` 占位插值；缺失变量原样保留占位符。
@@ -25,24 +25,24 @@
 仅打包 `dist` 与标准 manifest，不要求消费方编译 `node_modules` 内 TypeScript。
 生成目录不提交，源码与公开 API 不变。
 
-发行目标固定为 CNB 通用私有库
-`https://npm.cnb.cool/awesomeaicode/npm/registry/-/packages/`，包名保持 `@kokoro/i18n`。
-包按内部用途标识 `UNLICENSED`，根包与其它包仍为 private；制品库自身保持 Private、禁止覆盖。
-`publishConfig.registry` 固定发行位置，不发布到 npmjs。正式发行必须有发布权限，
+发行目标固定为 GitHub Packages `https://npm.pkg.github.com`。
+包按内部用途标识 `UNLICENSED`，根包与其它包仍为 private；发行包初始保持 private。
+`publishConfig.registry` 固定发行位置，不发布到 npmjs 或其它 registry。正式发行必须有发布权限，
 从已审查提交发布未占用版本，并核真实 registry 的版本、integrity 与独立拉取结果。
 源码版本本身不证明发行成功，禁止覆盖或将 E404 冒称已获完整版本清单。
 
 在 shared 根目录使用已固定 pnpm 与 Node22：
 
 ```bash
-pnpm --filter @kokoro/i18n lint
-pnpm --filter @kokoro/i18n typecheck
-pnpm --filter @kokoro/i18n test
+pnpm --filter @lordfoxfairy/i18n lint
+pnpm --filter @lordfoxfairy/i18n typecheck
+pnpm --filter @lordfoxfairy/i18n test
 pnpm --dir packages/i18n pack --pack-destination /tmp/kokoro-i18n-release
 ```
 
 审查合 main 后，从精确提交执行 `pnpm --dir packages/i18n publish --access restricted`。
-认证仅放用户私有 npm 配置，不进源码或命令参数；App/CI 使用独立只读身份。
+本地复用现 GitHub 登录，认证仅临时注入，不进源码或命令参数；App Actions 使用自动
+`GITHUB_TOKEN`、`packages: read` 和该包的仓库读取授权，不新增长期 npm secret。
 App 只在真实 registry 拉取验证后切换精确依赖；修正发行递增版本，不覆盖已有制品。
 
 ## 扩展规则
