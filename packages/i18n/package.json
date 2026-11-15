@@ -1,5 +1,5 @@
 {
-  "name": "@kokoro/i18n",
+  "name": "@lordfoxfairy/i18n",
   "version": "0.1.0",
   "license": "UNLICENSED",
   "repository": {
@@ -19,7 +19,7 @@
     "dist"
   ],
   "publishConfig": {
-    "registry": "https://npm.cnb.cool/awesomeaicode/npm/registry/-/packages/",
+    "registry": "https://npm.pkg.github.com",
     "exports": {
       ".": {
         "types": "./dist/index.d.ts",

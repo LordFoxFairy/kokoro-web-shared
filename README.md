@@ -7,7 +7,7 @@ i18n 引擎和工程基线；不承载产品页面、品牌事实、租户身份
 ## Packages
 
 - `@kokoro/web-core`：无 React、CSS、网络依赖的资源/动作状态和公开 runtime 类型。
-- `@kokoro/i18n`：无 DOM、无框架依赖的语言协商、插值和 fallback 引擎。
+- `@lordfoxfairy/i18n`：无 DOM、无框架依赖的语言协商、插值和 fallback 引擎。
 - `@kokoro/tsconfig`：共享 TypeScript 编译基线。
 
 ## Boundary
@@ -18,6 +18,6 @@ i18n 引擎和工程基线；不承载产品页面、品牌事实、租户身份
 
 本地开发可使用显式的 `file:` package bridge；发布交付使用私有 registry、semver 和 lockfile。
 
-`@kokoro/i18n` 的正式制品目标为 CNB 通用私有 npm 库，发行步骤及权限/不可变版本约束见
+现 i18n 引擎只通过 GitHub Packages 发行，发行步骤及权限/不可变版本约束见
 [`packages/i18n/INDEX.md`](packages/i18n/INDEX.md)。包发布状态以 registry 收据与读取结果为准，
 不以源码版本或本地 pack 代替。其它包本轮不开放发布。
