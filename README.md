@@ -17,3 +17,7 @@ i18n 引擎和工程基线；不承载产品页面、品牌事实、租户身份
 供应商适配器分别由产品或服务 owner 管理。
 
 本地开发可使用显式的 `file:` package bridge；发布交付使用私有 registry、semver 和 lockfile。
+
+`@kokoro/i18n` 的正式制品目标为 CNB 通用私有 npm 库，发行步骤及权限/不可变版本约束见
+[`packages/i18n/INDEX.md`](packages/i18n/INDEX.md)。包发布状态以 registry 收据与读取结果为准，
+不以源码版本或本地 pack 代替。其它包本轮不开放发布。
